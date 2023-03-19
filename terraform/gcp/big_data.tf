@@ -1,12 +1,11 @@
 resource "google_sql_database_instance" "master_instance" {
   name             = "terragoat-${var.environment}-master"
-  database_version = "POSTGRES_11"
+  database_version = true
   region           = var.region
 
   settings {
     tier = "db-f1-micro"
     ip_configuration {
-      require_ssl = true
       ipv4_enabled = true
       authorized_networks {
         name  = "WWW"
